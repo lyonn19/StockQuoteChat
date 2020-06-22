@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StockMarketBot
 {
-    public static class Config
+    public static class Settings
     {
         public static string API_BASE = "https://stooq.com";
         public static string API_URL = "/q/l/";

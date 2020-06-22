@@ -17,7 +17,7 @@ namespace Chat.Web.Hubs
             await Clients.All.SendAsync("ReceiveMessage", user, message);
             if (message.StartsWith("/stock="))
             {
-                stockService = new StockService();
+                stockService = new StockService(); // TODO Dependency Injection
                 await stockService.GetStockQuote(message.Trim().Substring(7));
             }
         }

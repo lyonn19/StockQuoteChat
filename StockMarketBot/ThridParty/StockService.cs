@@ -1,14 +1,10 @@
-﻿using FileHelpers;
-using Newtonsoft.Json;
-using StockMarketBot.Agents.Base;
+﻿using StockMarketBot.Agents.Base;
 using StockMarketBot.Models;
 using StockMarketBot.Utils;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using TinyCsvParser;
@@ -17,11 +13,9 @@ namespace StockMarketBot.Agents
 {
     public class StockService : ServiceBase, IStockService
     {
-        HttpClient _httpClient;
 
-        public StockService() : base(Config.API_BASE)
+        public StockService() : base(Settings.API_BASE)
         {
-            _httpClient = new HttpClient();
         }
 
         public async Task<Quote> GetStockQuote(string stock_code)
@@ -37,7 +31,7 @@ namespace StockMarketBot.Agents
                     { "e", "csv" }
                 };
 
-                var response = await GetAsync(Config.API_URL, parameters);
+                var response = await GetAsync(Settings.API_URL, parameters);
 
                 if (response.IsSuccessStatusCode)
                 {

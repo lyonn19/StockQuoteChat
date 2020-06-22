@@ -11,8 +11,8 @@ namespace StockMarketBot.Agents.Base
     public class RestService
     {
         private HttpClient _httpClient;
-        private readonly string jsonMediaType = "application/json";
         private string _endPoint;
+        private readonly string jsonMediaType = "application/json";
 
         public RestService(string endPoint)
         {
@@ -57,8 +57,6 @@ namespace StockMarketBot.Agents.Base
                 return endPoint;
             }
         }
-
-        public HttpClient Client { get { return _httpClient; } }
 
     }
 }
