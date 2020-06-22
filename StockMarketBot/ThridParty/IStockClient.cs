@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace StockMarketBot.Agents
 {
-    public interface IStockService
+    public interface IStockClient
     {
         Task<Quote> GetStockQuote(string stock_code); 
     }

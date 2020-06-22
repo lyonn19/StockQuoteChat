@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Chat.Web.Hubs;
+using Chat.Web.Messaging;
+using Chat.Web.Messaging.Background;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +28,12 @@ namespace Chat.Web
         {
             services.AddRazorPages();
             services.AddSignalR();
+
+            //services.AddSingleton<Producer>();
+            //services.AddSingleton<Consumer>();
+            services.AddSingleton<ChatHub>();
+
+            services.AddHostedService<ConsumeRabbitMQHostedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +62,8 @@ namespace Chat.Web
                 endpoints.MapRazorPages();
                 endpoints.MapHub<ChatHub>("/chathub");
             });
+
+            //app.UseRabbitListener();
         }
     }
 }

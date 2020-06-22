@@ -1,11 +1,9 @@
 ﻿using RabbitMQ.Client;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Chat.Web.Messaging
+namespace StockMarketBot.Messaging
 {
     public class Producer
     {
@@ -13,11 +11,14 @@ namespace Chat.Web.Messaging
         {
         }
 
-        public bool PushMessageToQ()
+        public bool PushMessageToQ(string message)
         {
             try
             {
-                var factory = new ConnectionFactory() { HostName = "localhost" };
+                var factory = new ConnectionFactory()
+                {
+                    Uri = new Uri("amqp://guest:guest@localhost:5672")
+                };
                 using (var connection = factory.CreateConnection())
                 using (var channel = connection.CreateModel())
                 {
@@ -27,7 +28,6 @@ namespace Chat.Web.Messaging
                                          autoDelete: false,
                                          arguments: null);
 
-                    string message = "Hello World!";
                     var body = Encoding.UTF8.GetBytes(message);
 
                     channel.BasicPublish(exchange: "",
@@ -37,8 +37,6 @@ namespace Chat.Web.Messaging
                     Console.WriteLine(" [x] Sent {0}", message);
                 }
 
-                Console.WriteLine(" Press [enter] to exit.");
-                Console.ReadLine();
                 return true;
             }
             catch (Exception ex)

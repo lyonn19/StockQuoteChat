@@ -2,7 +2,7 @@
 
 namespace StockMarketBot.Models
 {
-    public class Quote
+    public class Quote : Response
     {
         public string Symbol { get; set; }
 
