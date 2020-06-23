@@ -1,5 +1,5 @@
 # StockQuoteChat
-Playing with Backend Technologies .Net Core, SignalR, Queue (RabbitMq), Identity
+Playing with Backend Technologies .Net Core,SignalR, Queue (RabbitMq), Entity Framework, Identity
 
 1. Prerequisites
 - .Net Core SDK 3.0
