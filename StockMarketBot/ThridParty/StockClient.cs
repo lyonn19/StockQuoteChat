@@ -69,7 +69,7 @@ namespace StockMarketBot.Agents
                 quote = new Quote
                 {
                     Status = false,
-                    Message = "An unexpected error occurred"
+                    Message = "We couldn´t understood your query, check your stock name"
                 };
             }
 

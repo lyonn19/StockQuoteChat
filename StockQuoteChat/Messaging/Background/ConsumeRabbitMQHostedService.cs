@@ -1,4 +1,4 @@
-﻿using Chat.Web.Hubs;
+﻿using StockQuoteChat.Hubs;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Chat.Web.Messaging.Background
+namespace StockQuoteChat.Messaging.Background
 {
     public class ConsumeRabbitMQHostedService : BackgroundService
     {

@@ -22,8 +22,8 @@ namespace StockMarketBot.Messaging
                 using (var connection = factory.CreateConnection())
                 using (var channel = connection.CreateModel())
                 {
-                    channel.QueueDeclare(queue: "hello",
-                                         durable: false,
+                    channel.QueueDeclare(queue: "demo.queue.log",
+                                         durable: true,
                                          exclusive: false,
                                          autoDelete: false,
                                          arguments: null);
@@ -31,7 +31,7 @@ namespace StockMarketBot.Messaging
                     var body = Encoding.UTF8.GetBytes(message);
 
                     channel.BasicPublish(exchange: "",
-                                         routingKey: "hello",
+                                         routingKey: "demo.queue.log",
                                          basicProperties: null,
                                          body: body);
                     Console.WriteLine(" [x] Sent {0}", message);
