@@ -41,6 +41,7 @@ namespace StockQuoteChat
             services.AddTransient<IStockQuoteService, StockQuoteService>();
             services.AddHostedService<ConsumeRabbitMQHostedService>();
 
+            // Database
             services.AddDbContext<ApplicationContext>(opts =>
                opts.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
 
@@ -48,8 +49,6 @@ namespace StockQuoteChat
             services.AddIdentity<User, IdentityRole>()
              .AddEntityFrameworkStores<ApplicationContext>();
             */
-
-            services.AddScoped<IUserClaimsPrincipalFactory<User>, CustomClaimsFactory>();
 
             services.AddIdentity<User, IdentityRole>(opt =>
             {
@@ -59,6 +58,9 @@ namespace StockQuoteChat
                 opt.User.RequireUniqueEmail = true;
             })
              .AddEntityFrameworkStores<ApplicationContext>();
+
+            services.AddScoped<IUserClaimsPrincipalFactory<User>, CustomClaimsFactory>();
+            //services.ConfigureApplicationCookie(o => o.LoginPath = "/Account/Login");
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -83,6 +85,7 @@ namespace StockQuoteChat
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -23,7 +23,7 @@ namespace StockMarketBot.Messaging
                 using (var channel = connection.CreateModel())
                 {
                     channel.QueueDeclare(queue: "demo.queue.log",
-                                         durable: true,
+                                         durable: false,
                                          exclusive: false,
                                          autoDelete: false,
                                          arguments: null);
