@@ -9,21 +9,23 @@ namespace StockMarketBot.Services
 {
     public class StockQuoteService : IStockQuoteService
     {
-        private readonly IStockClient _stockClient;
-        private readonly Producer _producer;
-        
+        private IStockClient _stockClient;
+        private Producer _producer;
+
         public StockQuoteService() 
         {
             _stockClient = new StockClient();
             _producer = new Producer();
         }
-        public async Task GetStockQuote(string stock_code)
+
+        public async Task GetStockQuote(string stockCode)
         {
-            var quote = await _stockClient.GetStockQuote(stock_code);
+            var quote = await _stockClient.GetStockQuote(stockCode);
             if (quote.Status)
                 _producer.PushMessageToQ($"{quote.Symbol} quote is {quote.Close} per share");
             else
                 _producer.PushMessageToQ(quote.Message);
         }
+
     }
 }

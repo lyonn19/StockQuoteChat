@@ -71,7 +71,7 @@ namespace Chat.Web.Messaging.Background
 
         private async Task HandleMessage(string content)
         {
-            await _chatHub.SendMessage("stock_bot:", content);
+            await _chatHub.SendMessage("stock_bot", content);
         }
 
         private void OnConsumerConsumerCancelled(object sender, ConsumerEventArgs e) { }

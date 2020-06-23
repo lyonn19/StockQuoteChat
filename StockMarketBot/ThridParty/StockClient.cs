@@ -13,22 +13,22 @@ using TinyCsvParser.Mapping;
 
 namespace StockMarketBot.Agents
 {
-    public class StockClient : ServiceBase, IStockClient, IDisposable
+    public class StockClient : BaseClient, IStockClient
     {
         public StockClient() : base(Settings.API_BASE)
         {
         }
 
-        public async Task<Quote> GetStockQuote(string stock_code)
+        public async Task<Quote> GetStockQuote(string stockCode)
         {
             var quote = new Quote();
             try
             {
-                var fileInfo = new FileInfo($"{stock_code}.csv");
+                var fileInfo = new FileInfo($"{stockCode}.csv");
 
                 var response = await GetAsync(Settings.API_URL, new Dictionary<string, string>
                 {
-                    { "s", stock_code },
+                    { "s", stockCode },
                     { "f", "sd2t2ohlcv&h" },
                     { "e", "csv" }
                 });

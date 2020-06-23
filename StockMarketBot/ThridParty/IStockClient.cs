@@ -5,6 +5,6 @@ namespace StockMarketBot.Agents
 {
     public interface IStockClient
     {
-        Task<Quote> GetStockQuote(string stock_code); 
+        Task<Quote> GetStockQuote(string stockCode); 
     }
 }

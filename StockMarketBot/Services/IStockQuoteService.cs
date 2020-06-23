@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace StockMarketBot.Services
 {
-    interface IStockQuoteService
+    public interface IStockQuoteService
     {
         Task GetStockQuote(string stock_code);
     }

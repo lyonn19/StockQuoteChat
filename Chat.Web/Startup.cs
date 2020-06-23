@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StockMarketBot.Services;
 
 namespace Chat.Web
 {
@@ -29,10 +30,8 @@ namespace Chat.Web
             services.AddRazorPages();
             services.AddSignalR();
 
-            //services.AddSingleton<Producer>();
-            //services.AddSingleton<Consumer>();
             services.AddSingleton<ChatHub>();
-
+            services.AddTransient<IStockQuoteService,StockQuoteService>();
             services.AddHostedService<ConsumeRabbitMQHostedService>();
         }
 
