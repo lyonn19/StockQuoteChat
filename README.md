@@ -4,6 +4,7 @@ Playing with Backend Technologies .Net Core, SignalR, Event Messaging(RabbitMq),
 1. Prerequisites
 - .Net Core SDK 3.0
 - Docker installed and running 
+- GitBash Console 
 
 2. How to use 
 - Run RabbitMQ Docker Image
@@ -13,15 +14,15 @@ Playing with Backend Technologies .Net Core, SignalR, Event Messaging(RabbitMq),
   - $> docker pull mcr.microsoft.com/mssql/server:latest
   - $> docker run 'ACCEPT_EULA=Y' 'SA_PASSWORD=Password1!' 'MSSQL_PID=Express' --name sqlserver -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest
 - Run App 
-  - git clone https://github.com/lyonn19/StockQuoteChat.git
-  - cd StockMarketChat
-  - mkdir -p app/build
-  - mkdir -p app/publish
-  - dotnet restore "StockQuoteChat/StockQuoteChat.csproj"
-  - dotnet build "StockQuoteChat/StockQuoteChat.csproj" -c Release -o app/build
-  - dotnet publish "StockQuoteChat/StockQuoteChat.csproj" -c Release -o app/publish
-  - cd app/publish
-  - dotnet StockQuoteChat.dll
-    Now listening on: http://localhost:5000
-	  Now listening on: https://localhost:5001
+  - $> git clone https://github.com/lyonn19/StockQuoteChat.git
+  - $> cd StockMarketChat
+  - $> mkdir -p app/build
+  - $> mkdir -p app/publish
+  - $> dotnet restore "StockQuoteChat/StockQuoteChat.csproj"
+  - $> dotnet build "StockQuoteChat/StockQuoteChat.csproj" -c Release -o app/build
+  - $> dotnet publish "StockQuoteChat/StockQuoteChat.csproj" -c Release -o app/publish
+  - $> cd app/publish
+  - $> dotnet StockQuoteChat.dll
+     - Now listening on: http://localhost:5000
+     - Now listening on: https://localhost:5001
   
