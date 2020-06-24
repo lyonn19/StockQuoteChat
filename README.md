@@ -15,7 +15,7 @@ Playing with Backend Technologies .Net Core, SignalR, Event Messaging(RabbitMq),
   - $> docker run 'ACCEPT_EULA=Y' 'SA_PASSWORD=Password1!' 'MSSQL_PID=Express' --name sqlserver -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest
 - Run App 
   - $> git clone https://github.com/lyonn19/StockQuoteChat.git
-  - $> cd StockMarketChat
+  - $> cd StockQuoteChat
   - $> mkdir -p app/build
   - $> mkdir -p app/publish
   - $> dotnet restore "StockQuoteChat/StockQuoteChat.csproj"
