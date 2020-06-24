@@ -30,7 +30,7 @@ namespace StockMarketBot.Messaging
 
                     var body = Encoding.UTF8.GetBytes(message);
 
-                    channel.BasicPublish(exchange: "",
+                    channel.BasicPublish(exchange: "demo.exchange",
                                          routingKey: "demo.queue.log",
                                          basicProperties: null,
                                          body: body);

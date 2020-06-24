@@ -26,10 +26,10 @@ namespace StockQuoteChat.Messaging.Background
 
         private void InitRabbitMQ()
         {
-            var factory = new ConnectionFactory()
+            var factory = new ConnectionFactory
             {
                 Uri = new Uri("amqp://guest:guest@localhost:5672")
-            };
+            }; 
 
             // create connection  
             _connection = factory.CreateConnection();
@@ -56,7 +56,7 @@ namespace StockQuoteChat.Messaging.Background
                 var content = System.Text.Encoding.UTF8.GetString(ea.Body.ToArray());
 
                 // handle the received message  
-                HandleMessage(content);
+                HandleMessageAsync(content);
                 _channel.BasicAck(ea.DeliveryTag, false);
             };
 
@@ -69,7 +69,7 @@ namespace StockQuoteChat.Messaging.Background
             return Task.CompletedTask;
         }
 
-        private async Task HandleMessage(string content)
+        private async Task HandleMessageAsync(string content)
         {
             await _chatHub.SendMessage("stock_bot", content);
         }
